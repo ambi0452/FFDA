@@ -200,6 +200,117 @@
             font-size: 1.3rem;
             color: var(--dark);
             cursor: pointer;
+            z-index: 1001;
+        }
+        
+        /* Mobile Menu - FIXED */
+        .mobile-menu {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 100%;
+            max-width: 320px;
+            height: 100vh;
+            background: white;
+            z-index: 1002;
+            transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: -10px 0 30px rgba(0,0,0,0.15);
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        
+        .mobile-menu.active {
+            right: 0;
+        }
+        
+        .mobile-menu-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 25px 25px 20px;
+            background: var(--gradient);
+            color: white;
+        }
+        
+        .mobile-menu-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: white;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-menu-close:hover {
+            opacity: 0.8;
+        }
+        
+        .mobile-nav-links {
+            flex: 1;
+            padding: 30px 25px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .mobile-nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 1.1rem;
+            padding: 15px 20px;
+            border-radius: 10px;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .mobile-nav-links a:hover {
+            background: rgba(255, 107, 139, 0.1);
+            color: var(--primary);
+            transform: translateX(5px);
+        }
+        
+        .mobile-nav-links a i {
+            width: 20px;
+            text-align: center;
+            color: var(--primary);
+        }
+        
+        .mobile-menu-footer {
+            padding: 25px;
+            background: #f9f9f9;
+            border-top: 1px solid #eee;
+        }
+        
+        .mobile-menu-footer .primary-btn {
+            width: 100%;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .mobile-menu-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1001;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .mobile-menu-overlay.active {
+            opacity: 1;
+            visibility: visible;
         }
         
         /* Hero Section */
@@ -1547,95 +1658,6 @@
             }
         }
         
-        /* Mobile Menu */
-        .mobile-menu {
-            position: fixed;
-            top: 0;
-            right: -100%;
-            width: 100%;
-            max-width: 300px;
-            height: 100vh;
-            background: white;
-            z-index: 1100;
-            transition: right 0.4s ease;
-            box-shadow: -10px 0 30px rgba(0,0,0,0.1);
-            padding: 30px 20px;
-            display: flex;
-            flex-direction: column;
-        }
-        
-        .mobile-menu.active {
-            right: 0;
-        }
-        
-        .mobile-menu-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 40px;
-        }
-        
-        .mobile-menu-close {
-            background: none;
-            border: none;
-            font-size: 1.5rem;
-            color: var(--dark);
-            cursor: pointer;
-        }
-        
-        .mobile-nav-links {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-        
-        .mobile-nav-links a {
-            text-decoration: none;
-            color: var(--dark);
-            font-weight: 500;
-            font-size: 1.1rem;
-            padding: 10px 0;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .mobile-nav-links a:hover {
-            color: var(--primary);
-        }
-        
-        .mobile-menu-footer {
-            margin-top: auto;
-            padding-top: 30px;
-            border-top: 1px solid #eee;
-        }
-        
-        .mobile-menu-footer .pricing-btn {
-            width: 100%;
-        }
-        
-        /* Fix for pricing cards on very small screens */
-        @media (max-width: 400px) {
-            .hero-stat {
-                min-width: 100%;
-            }
-            
-            .hero-stats {
-                flex-direction: column;
-            }
-            
-            .footer-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .pricing-price {
-                font-size: 2.5rem;
-            }
-            
-            .gallery-tab, .tab-btn {
-                padding: 10px 15px;
-                font-size: 0.9rem;
-            }
-        }
-        
         /* Fix for the "Start Your Dance Journey" button */
         @media (max-width: 768px) {
             .hero-content {
@@ -1687,6 +1709,9 @@
         </div>
     </header>
     
+    <!-- Mobile Menu Overlay -->
+    <div class="mobile-menu-overlay" id="mobileMenuOverlay"></div>
+    
     <!-- Mobile Menu -->
     <div class="mobile-menu" id="mobileMenu">
         <div class="mobile-menu-header">
@@ -1695,8 +1720,8 @@
                     <i class="fas fa-shoe-prints"></i>
                 </div>
                 <div class="logo-text">
-                    <h1>Foot Forward</h1>
-                    <span>Dance Studio</span>
+                    <h1 style="color: white; font-size: 1.4rem;">Foot Forward</h1>
+                    <span style="color: rgba(255,255,255,0.8); font-size: 0.8rem;">Dance Studio</span>
                 </div>
             </div>
             <button class="mobile-menu-close" id="mobileMenuClose">
@@ -1705,19 +1730,40 @@
         </div>
         
         <div class="mobile-nav-links">
-            <a href="#home">Home</a>
-            <a href="#comprehensive-offerings">Offerings</a>
-            <a href="#specialized-services">Services</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#mission">Our Mission</a>
-            <a href="#founder">Founder</a>
-            <a href="#offerings">Classes</a>
-            <a href="#pricing">Pricing</a>
-            <a href="#contact">Contact</a>
+            <a href="#home" onclick="closeMobileMenu()">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="#comprehensive-offerings" onclick="closeMobileMenu()">
+                <i class="fas fa-music"></i> Offerings
+            </a>
+            <a href="#specialized-services" onclick="closeMobileMenu()">
+                <i class="fas fa-concierge-bell"></i> Services
+            </a>
+            <a href="#gallery" onclick="closeMobileMenu()">
+                <i class="fas fa-images"></i> Gallery
+            </a>
+            <a href="#mission" onclick="closeMobileMenu()">
+                <i class="fas fa-bullseye"></i> Our Mission
+            </a>
+            <a href="#founder" onclick="closeMobileMenu()">
+                <i class="fas fa-user"></i> Founder
+            </a>
+            <a href="#offerings" onclick="closeMobileMenu()">
+                <i class="fas fa-users"></i> Classes
+            </a>
+            <a href="#pricing" onclick="closeMobileMenu()">
+                <i class="fas fa-tag"></i> Pricing
+            </a>
+            <a href="#why-choose-us" onclick="closeMobileMenu()">
+                <i class="fas fa-star"></i> Why Choose Us
+            </a>
+            <a href="#contact" onclick="closeMobileMenu()">
+                <i class="fas fa-phone"></i> Contact
+            </a>
         </div>
         
         <div class="mobile-menu-footer">
-            <a href="https://wa.me/917017161552" class="pricing-btn">
+            <a href="https://wa.me/917017161552" class="primary-btn">
                 <i class="fab fa-whatsapp"></i> Book Free Trial
             </a>
         </div>
@@ -2401,7 +2447,8 @@
                     <ul class="footer-links">
                         <li><a href="#"><i class="fas fa-map-marker-alt"></i> Peerumadara, Corbett</a></li>
                         <li><a href="#"><i class="fas fa-map-marker-alt"></i> Himmatpur Andhoriya, Ramnagar</a></li>
-                        <li><a href="tel:07017161552"><i class="fas fa-phone"></i> 070171 61552</a></li>
+                        <li><a href="tel:+917017161552"><i class="fas fa-phone"></i> +9170171 61552</a></li>
+            
                         <li><a href="https://instagram.com/footforwardstudio" target="_blank"><i class="fab fa-instagram"></i> @footforwardstudio</a></li>
                         <li><a href="https://instagram.com/devofficialz" target="_blank"><i class="fab fa-instagram"></i> @devofficialz</a></li>
                         <li><a href="#"><i class="fas fa-clock"></i> Mon-Sat: 8AM-8PM</a></li>
@@ -2410,44 +2457,50 @@
             </div>
             
             <div class="copyright">
-                <p>&copy; 2023 Foot Forward Dance Studio. All rights reserved. | Come • Learn • Grow • Inspire</p>
+                <p>&copy; 2025 Foot Forward Dance Studio. All rights reserved. | Come • Learn • Grow • Inspire</p>
                 <p style="margin-top: 10px; font-size: 0.8rem;">Himmatpur Andhoriya, Ramnagar, Uttarakhand 244715 | Peerumadara, Corbett</p>
-                <p style="margin-top: 5px; font-size: 0.8rem;"><i class="fas fa-info-circle"></i> No official age limit for classes. All ages are welcome!</p>
+                
             </div>
         </div>
     </footer>
     
     <script>
-        // Mobile Menu Toggle
+        // Mobile Menu Functions
         const mobileToggle = document.getElementById('mobileToggle');
         const mobileMenu = document.getElementById('mobileMenu');
+        const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
         const mobileMenuClose = document.getElementById('mobileMenuClose');
         
-        mobileToggle.addEventListener('click', () => {
+        function openMobileMenu() {
             mobileMenu.classList.add('active');
+            mobileMenuOverlay.classList.add('active');
             document.body.style.overflow = 'hidden';
-        });
+        }
         
-        mobileMenuClose.addEventListener('click', () => {
+        function closeMobileMenu() {
             mobileMenu.classList.remove('active');
+            mobileMenuOverlay.classList.remove('active');
             document.body.style.overflow = 'auto';
-        });
+        }
+        
+        // Open mobile menu
+        mobileToggle.addEventListener('click', openMobileMenu);
+        
+        // Close mobile menu with close button
+        mobileMenuClose.addEventListener('click', closeMobileMenu);
+        
+        // Close mobile menu when clicking overlay
+        mobileMenuOverlay.addEventListener('click', closeMobileMenu);
         
         // Close mobile menu when clicking on a link
         document.querySelectorAll('.mobile-nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
+            link.addEventListener('click', closeMobileMenu);
         });
         
-        // Close mobile menu when clicking outside
-        document.addEventListener('click', (e) => {
-            if (mobileMenu.classList.contains('active') && 
-                !mobileMenu.contains(e.target) && 
-                e.target !== mobileToggle) {
-                mobileMenu.classList.remove('active');
-                document.body.style.overflow = 'auto';
+        // Close mobile menu with Escape key
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+                closeMobileMenu();
             }
         });
         
