@@ -179,7 +179,7 @@
         
         .nav-cta {
             background: var(--gradient);
-            color: white;
+            color: white !important;
             padding: 8px 18px;
             border-radius: 50px;
             text-decoration: none;
@@ -195,6 +195,7 @@
         .nav-cta:hover {
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(255, 107, 139, 0.4);
+            color: white !important;
         }
         
         .mobile-toggle {
@@ -810,6 +811,7 @@
             transform: scale(1.1);
         }
         
+        /* FIXED: Gallery Overlay - Now works on mobile too */
         .gallery-overlay {
             position: absolute;
             bottom: 0;
@@ -818,14 +820,42 @@
             background: linear-gradient(transparent, rgba(0,0,0,0.8));
             color: white;
             padding: 20px;
-            transform: translateY(20px);
-            opacity: 0;
+            transform: translateY(0);
+            opacity: 1;
             transition: all 0.3s;
         }
         
-        .gallery-item:hover .gallery-overlay {
-            transform: translateY(0);
-            opacity: 1;
+        /* On desktop, show overlay on hover only */
+        @media (min-width: 769px) {
+            .gallery-overlay {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            
+            .gallery-item:hover .gallery-overlay {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+        
+        /* On mobile, show overlay always */
+        @media (max-width: 768px) {
+            .gallery-overlay {
+                transform: translateY(0);
+                opacity: 1;
+                background: linear-gradient(transparent, rgba(0,0,0,0.9));
+                padding: 15px;
+            }
+            
+            /* Optional: Make text more readable on mobile */
+            .gallery-overlay h4 {
+                font-size: 1.1rem;
+                margin-bottom: 3px;
+            }
+            
+            .gallery-overlay p {
+                font-size: 0.85rem;
+            }
         }
         
         .gallery-overlay h4 {
@@ -843,7 +873,7 @@
             margin-top: 40px;
         }
         
-        /* Mission Section */
+        /* Mission/Philosophy Section */
         .mission-section {
             background: white;
         }
@@ -914,7 +944,7 @@
         
         .founder-container {
             display: grid;
-            grid-template-columns: 1fr 2fr;
+            grid-template-columns: 1fr 1fr;
             gap: 50px;
             align-items: center;
         }
@@ -928,6 +958,7 @@
         .founder-image img {
             width: 100%;
             height: auto;
+            display: block;
         }
         
         .founder-content h3 {
@@ -1674,6 +1705,19 @@
             .hero-cta {
                 text-align: center;
             }
+            
+            /* Mobile Gallery Overlay Fix */
+            .gallery-overlay {
+                padding: 12px;
+            }
+            
+            .gallery-overlay h4 {
+                font-size: 1rem;
+            }
+            
+            .gallery-overlay p {
+                font-size: 0.8rem;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1700,6 +1744,8 @@
                 
                 <nav class="nav-menu">
                     <a href="#home">Home</a>
+                    <a href="#comprehensive-offerings">Offerings</a>
+                    <a href="#specialized-services">Services</a>
                     <a href="#gallery">Gallery</a>
                     <a href="#mission">Our Mission</a>
                     <a href="#founder">Founder</a>
@@ -1952,7 +1998,7 @@
                         <i class="fas fa-chalkboard-teacher"></i>
                     </div>
                     <h3>Experienced Instructors</h3>
-                    <p>Guided by Founder/Choreographer @devofficialz with years of professional experience</p>
+                    <p>Guided by Founder/Choreographer Dev Bhatt with years of professional experience</p>
                 </div>
                 
                 <div class="benefit-item">
@@ -2079,77 +2125,83 @@
         </div>
     </section>
     
-    <!-- Mission Section -->
-    <section class="mission-section section-padding" id="mission">
-        <div class="container">
-            <div class="mission-container">
-                <div class="mission-content">
-                    <h2>Our <span>Mission</span> & Philosophy</h2>
-                    <p class="mission-quote">"To inspire creativity and lifelong learning through engaging, hands-on dance experiences."</p>
-                    <p>At Foot Forward Dance Studio, we believe dance is more than just movement—it's a form of self-expression that promotes well-being, confidence, and joy. Our supportive environment encourages exploration and growth for all ages and skill levels.</p>
-                    
-                    <div class="mission-highlights">
-                        <div class="mission-highlight">
-                            <i class="fas fa-check-circle"></i>
-                            <div>Supportive & friendly learning environment</div>
-                        </div>
-                        <div class="mission-highlight">
-                            <i class="fas fa-check-circle"></i>
-                            <div>Caters to various interests and skill levels</div>
-                        </div>
-                        <div class="mission-highlight">
-                            <i class="fas fa-check-circle"></i>
-                            <div>Promotes self-expression and well-being</div>
-                        </div>
-                        <div class="mission-highlight">
-                            <i class="fas fa-check-circle"></i>
-                            <div>Community of like-minded individuals</div>
-                        </div>
+   <!-- Mission Section with YOUR Image -->
+<section class="mission-section section-padding" id="mission">
+    <div class="container">
+        <div class="mission-container">
+            <div class="mission-content">
+                <h2>Our <span>Mission</span> & Philosophy</h2>
+                <p class="mission-quote">"To inspire creativity and lifelong learning through engaging, hands-on dance experiences."</p>
+                <p>At Foot Forward Dance Studio, we believe dance is more than just movement—it's a form of self-expression that promotes well-being, confidence, and joy. Our supportive environment encourages exploration and growth for all ages and skill levels.</p>
+                
+                <div class="mission-highlights">
+                    <div class="mission-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Supportive & friendly learning environment</div>
                     </div>
-                </div>
-                
-                <div class="mission-image">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dance class at Foot Forward Studio" width="800" height="600" loading="lazy">
-                </div>
-            </div>
-        </div>
-    </section>
-    
-    <!-- Founder Section -->
-    <section class="founder-section section-padding" id="founder">
-        <div class="container">
-            <div class="founder-container">
-                <div class="founder-image">
-                    <img src="https://images.unsplash.com/photo-1546820389-44d77e1f3b31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Choreographer Devofficialz" width="800" height="600" loading="lazy">
-                </div>
-                
-                <div class="founder-content">
-                    <h3>MEET THE FOUNDER</h3>
-                    <h2>Choreographer <span>@devofficialz</span></h2>
-                    <p class="founder-bio">With years of professional experience and a passion for dance education, our founder has created a space where dancers of all levels can thrive. Trained in multiple dance forms and with a vision to make quality dance education accessible in Corbett, they've built Foot Forward into the premier dance studio it is today.</p>
-                    
-                    <p>As the lead choreographer, @devofficialz brings energy, expertise, and enthusiasm to every class, ensuring students receive professional training while having fun.</p>
-                    
-                    <div class="founder-social">
-                        <a href="https://instagram.com/devofficialz" target="_blank">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-facebook-f"></i>
-                        </a>
-                        <a href="#">
-                            <i class="fab fa-youtube"></i>
-                        </a>
-                        <a href="https://wa.me/917017161552">
-                            <i class="fab fa-whatsapp"></i>
-                        </a>
+                    <div class="mission-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Caters to various interests and skill levels</div>
+                    </div>
+                    <div class="mission-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Promotes self-expression and well-being</div>
+                    </div>
+                    <div class="mission-highlight">
+                        <i class="fas fa-check-circle"></i>
+                        <div>Community of like-minded individuals</div>
                     </div>
                 </div>
             </div>
+            
+            <div class="mission-image">
+                <!-- YOUR GROUP PHOTO from GitHub -->
+                <img 
+                    src="https://github.com/ambi0452/FFDA/blob/main/groupog.jpg?raw=true" 
+                    alt="Dance students at Foot Forward Studio learning and growing together in Ramnagar, Corbett"
+                    loading="lazy">
+            </div>
         </div>
-    </section>
-    
-    <!-- Offerings Section -->
+    </div>
+</section>
+
+<!-- Founder Section -->
+<section class="founder-section section-padding" id="founder">
+    <div class="container">
+        <div class="founder-container">
+            <div class="founder-image">
+                <img 
+                    src="https://github.com/ambi0452/FFDA/blob/main/Founder.png?raw=true" 
+                    alt="Choreographer Dev Bhatt - Founder of Foot Forward Dance Studio"
+                    loading="lazy">
+            </div>
+            
+            <div class="founder-content">
+                <h3>MEET THE FOUNDER</h3>
+                <h2>Choreographer <span>@devofficialz</span></h2>
+                <p class="founder-bio">Dev Bhatt is a passionate choreographer with years of professional experience in dance education. With a vision to make quality dance training accessible in Corbett, Dev founded Foot Forward Dance Studio to create a space where dancers of all levels can thrive and express themselves.</p>
+                
+                <p>As the lead choreographer, Dev brings energy, expertise, and enthusiasm to every class, ensuring students receive professional training while having fun. Specializing in multiple dance forms including Bollywood, Hip-Hop, and Contemporary, Dev's teaching methodology focuses on technique, creativity, and personal growth.</p>
+                
+                <div class="founder-social">
+                    <a href="https://instagram.com/devofficialz" target="_blank">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="#">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                    <a href="https://wa.me/917017161552">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section> 
+<!-- Offerings Section -->
     <section class="offerings-section section-padding" id="offerings">
         <div class="container">
             <div class="section-header">
@@ -2456,7 +2508,6 @@
                         <li><a href="#"><i class="fas fa-map-marker-alt"></i> Peerumadara, Corbett</a></li>
                         <li><a href="#"><i class="fas fa-map-marker-alt"></i> Himmatpur Andhoriya, Ramnagar</a></li>
                         <li><a href="tel:+917017161552"><i class="fas fa-phone"></i> +9170171 61552</a></li>
-            
                         <li><a href="https://instagram.com/footforwardstudio" target="_blank"><i class="fab fa-instagram"></i> @footforwardstudio</a></li>
                         <li><a href="https://instagram.com/devofficialz" target="_blank"><i class="fab fa-instagram"></i> @devofficialz</a></li>
                         <li><a href="#"><i class="fas fa-clock"></i> Mon-Sat: 8AM-8PM</a></li>
@@ -2467,7 +2518,6 @@
             <div class="copyright">
                 <p>&copy; 2025 Foot Forward Dance Studio. All rights reserved. | Come • Learn • Grow • Inspire</p>
                 <p style="margin-top: 10px; font-size: 0.8rem;">Himmatpur Andhoriya, Ramnagar, Uttarakhand 244715 | Peerumadara, Corbett</p>
-                
             </div>
         </div>
     </footer>
