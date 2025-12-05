@@ -46,6 +46,10 @@
             box-sizing: border-box;
         }
         
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
             font-family: 'Poppins', sans-serif;
             line-height: 1.7;
@@ -203,7 +207,7 @@
             z-index: 1001;
         }
         
-        /* Mobile Menu - FIXED */
+        /* Mobile Menu */
         .mobile-menu {
             position: fixed;
             top: 0;
@@ -1656,10 +1660,8 @@
             .footer-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-        }
-        
-        /* Fix for the "Start Your Dance Journey" button */
-        @media (max-width: 768px) {
+            
+            /* Fix for the "Start Your Dance Journey" button */
             .hero-content {
                 text-align: center;
             }
@@ -1671,6 +1673,12 @@
             
             .hero-cta {
                 text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -1992,7 +2000,7 @@
             <div class="gallery-grid">
                 <!-- Class Sessions -->
                 <div class="gallery-item" data-category="classes">
-                    <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hip-Hop Dance Class">
+                    <img src="https://images.unsplash.com/photo-1519892300165-cb5542fb47c7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Hip-Hop Dance Class" width="800" height="600" loading="lazy">
                     <div class="gallery-overlay">
                         <h4>Hip-Hop Class</h4>
                         <p>Students learning urban dance moves</p>
@@ -2001,7 +2009,7 @@
                 
                 <!-- Performances -->
                 <div class="gallery-item" data-category="performances">
-                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Stage Performance">
+                    <img src="https://images.unsplash.com/photo-1547153760-18fc86324498?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Stage Performance" width="800" height="600" loading="lazy">
                     <div class="gallery-overlay">
                         <h4>Stage Performance</h4>
                         <p>Annual showcase 2023</p>
@@ -2010,7 +2018,7 @@
                 
                 <!-- Studio -->
                 <div class="gallery-item" data-category="studio">
-                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dance Studio Interior">
+                    <img src="https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dance Studio Interior" width="800" height="600" loading="lazy">
                     <div class="gallery-overlay">
                         <h4>Our Studio</h4>
                         <p>Professional dance floor & mirrors</p>
@@ -2019,7 +2027,7 @@
                 
                 <!-- Classes -->
                 <div class="gallery-item" data-category="classes">
-                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bollywood Dance Class">
+                    <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Bollywood Dance Class" width="800" height="600" loading="lazy">
                     <div class="gallery-overlay">
                         <h4>Bollywood Dance</h4>
                         <p>Learning expressive Indian cinema moves</p>
@@ -2028,7 +2036,7 @@
                 
                 <!-- Performances -->
                 <div class="gallery-item" data-category="performances">
-                    <img src="https://images.unsplash.com/photo-1543946602-59c20e8d9a14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Classical Dance Performance">
+                    <img src="https://images.unsplash.com/photo-1543946602-59c20e8d9a14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Classical Dance Performance" width="800" height="600" loading="lazy">
                     <div class="gallery-overlay">
                         <h4>Classical Performance</h4>
                         <p>Traditional dance showcase</p>
@@ -2037,7 +2045,7 @@
                 
                 <!-- Studio -->
                 <div class="gallery-item" data-category="studio">
-                    <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dance Studio Exterior">
+                    <img src="https://images.unsplash.com/photo-1508700929628-666bc8bd84ea?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dance Studio Exterior" width="800" height="600" loading="lazy">
                     <div class="gallery-overlay">
                         <h4>Studio Entrance</h4>
                         <p>Welcome to Foot Forward Dance Studio</p>
@@ -2046,7 +2054,7 @@
                 
                 <!-- Classes -->
                 <div class="gallery-item" data-category="classes">
-                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kids Dance Class">
+                    <img src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Kids Dance Class" width="800" height="600" loading="lazy">
                     <div class="gallery-overlay">
                         <h4>Kids Dance Class</h4>
                         <p>Young students having fun while learning</p>
@@ -2055,7 +2063,7 @@
                 
                 <!-- Performances -->
                 <div class="gallery-item" data-category="performances">
-                    <img src="https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Group Performance">
+                    <img src="https://images.unsplash.com/photo-1536922246289-88c42f957773?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Group Performance" width="800" height="600" loading="lazy">
                     <div class="gallery-overlay">
                         <h4>Group Performance</h4>
                         <p>Team coordination and synchronization</p>
@@ -2101,7 +2109,7 @@
                 </div>
                 
                 <div class="mission-image">
-                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dance class at Foot Forward Studio">
+                    <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Dance class at Foot Forward Studio" width="800" height="600" loading="lazy">
                 </div>
             </div>
         </div>
@@ -2112,7 +2120,7 @@
         <div class="container">
             <div class="founder-container">
                 <div class="founder-image">
-                    <img src="https://images.unsplash.com/photo-1546820389-44d77e1f3b31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Choreographer Devofficialz">
+                    <img src="https://images.unsplash.com/photo-1546820389-44d77e1f3b31?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Choreographer Devofficialz" width="800" height="600" loading="lazy">
                 </div>
                 
                 <div class="founder-content">
